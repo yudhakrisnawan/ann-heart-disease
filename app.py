@@ -72,14 +72,18 @@ def prediction(name,age,sex,cp,tresthbp,chol,fbs,restecg,thalach,exang,oldpeak,s
     score1, report, classifier = neuralNet(X_train, X_test, y_train, y_test)
     prediksi = classifier.predict(sc.fit_transform(np.array([[age,sex,cp,tresthbp,chol,fbs,restecg,thalach,exang,oldpeak,slope,cs,thal]])))
     prediksi_perc = int(prediksi * 100)
-    st.write("Saudara ",name," Memiliki kemungkinan memiliki penyakit jantung sebesar ",prediksi_perc,"%")
+	if (prediksi_perc > 50):
+		st.write("Saudara ",name," Memiliki kemungkinan penyakit jantung")
+		else:
+			st.write("Saudara ",name,"Tidak memiliki kemungkinan penyakit jantung")
+			
     
 
 def main():
     from sklearn.preprocessing import StandardScaler
     sc = StandardScaler()
-    st.title("PREDIKSI PENYAKIT JANTUNG")
-    st.markdown("Aplikasi ini dibuat untuk memprediksi kemungkinan sesorang mengidap penyakit jantung")
+    st.title("KLASIFIKASI PENYAKIT JANTUNG")
+    st.markdown("Aplikasi ini dibuat untuk mangklasifikasikan apakah seseorang memiliki kemungkinan penyakit jantung atau tidak")
     data = loadData()
     X_train, X_test, y_train, y_test = preprocessing(data)
     score1, report, classifier = neuralNet(X_train, X_test, y_train, y_test)
