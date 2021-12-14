@@ -72,9 +72,9 @@ def prediction(name,age,sex,cp,tresthbp,chol,fbs,restecg,thalach,exang,oldpeak,s
     score1, report, classifier = neuralNet(X_train, X_test, y_train, y_test)
     prediksi = classifier.predict(sc.fit_transform(np.array([[age,sex,cp,tresthbp,chol,fbs,restecg,thalach,exang,oldpeak,slope,cs,thal]])))
     prediksi_perc = int(prediksi * 100)
-if (prediksi_perc > 50):
-	st.write("Saudara ",name," Memiliki kemungkinan penyakit jantung")
-else:
+    if prediksi_perc > 50:
+        st.write("Saudara ",name," Memiliki kemungkinan penyakit jantung")
+    else :
 	st.write("Saudara ",name,"Tidak memiliki kemungkinan penyakit jantung")
 			
     
