@@ -1,9 +1,10 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 import keras
-from tensorflow.keras.models import Sequential #used to initialize our ANN
-from tensorflow.keras.layers import Dense #used to make layers in ANN
+from tensorflow.keras.models import Sequential #Digunakan untuk initialize ANN
+from tensorflow.keras.layers import Dense #Digunakan untuk membuat layers di ANN
 from tensorflow.keras.layers import Dropout
 
 @st.cache(suppress_st_warning=True, allow_output_mutation=True)
@@ -11,7 +12,7 @@ def loadData():
 	dataset = pd.read_csv('heart.csv')
 	return dataset
 
-# Basic preprocessing required for all the models.  
+# Basic preprocessing 
 def preprocessing(dataset):
     dataset.columns = ['age', 'sex', 'cp', 'trestbps', 'chol',
               'fbs', 'restecg', 'thalach', 'exang', 
@@ -23,7 +24,7 @@ def preprocessing(dataset):
     X = dataset.iloc[:, :-1].values
     y = dataset.iloc[:, -1].values
 
-    # Splitting the dataset into the Training set and Test set
+    # Splitting data menjadi Training set and Test set
     from sklearn.model_selection import train_test_split
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
     return X_train,X_test,y_train,y_test
@@ -42,10 +43,10 @@ def neuralNet(X_train, X_test, y_train, y_test):
 
     #add input layer and first hidden layer
     classifier.add(Dense(activation="relu", input_dim=13, units=7, kernel_initializer="uniform"))
-    #classifier.add(Dropout(0.3))
+    
     #add second hidden layer
     classifier.add(Dense(activation="relu", units=7, kernel_initializer="uniform"))
-    #classifier.add(Dropout(0.3))
+    
     #add output layer
     classifier.add(Dense(activation="sigmoid", units=1, kernel_initializer="uniform"))
 
