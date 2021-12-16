@@ -89,7 +89,7 @@ def graphic(X_train, X_test, y_train, y_test):
     classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
 
     #Fitting classifier ke Training set
-    classifier.fit(X_train, y_train, batch_size = 32, epochs = 500)
+    history = classifier.fit(X_train, y_train, batch_size = 100, epochs = 150)
 
     # Grafik History Accuracy
     fig = plt.figure(figsize=(10, 5))
