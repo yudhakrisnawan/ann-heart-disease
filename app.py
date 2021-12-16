@@ -165,11 +165,11 @@ def main():
     pilih_restecg = st.radio("Pilih hasil elektrokardiografi anda : ",options=['Normal','ST-T wave abnormality','Left ventricular hyperthroph'])
     restecg = 0
     if pilih_restecg == 'Normal':
-        restecg = 0
-    elif pilih_restecg == 'ST-T wave abnormality':
         restecg = 1
-    else :
+    elif pilih_restecg == 'ST-T wave abnormality':
         restecg = 2
+    else :
+        restecg = 0
     thalach = st.number_input("Masukkan tekanan darah tertinggi anda (/mmHg) : ",50,400,120)
     pilih_exang = st.checkbox("Apakah ketika melakukan aktivitas fisik berat seperti olahraga , dada anda terasa sakit ? Centang jika iya")
     exang = 0
@@ -179,22 +179,22 @@ def main():
     pilih_slope = st.radio("Masukkan bentuk kurva ST ",options=['Unsloping','Flat','Downsloping'])
     slope = 1
     if pilih_slope == 'Unsloping':
-        slope = 1
-    elif pilih_slope == 'Flat':
         slope = 2
+    elif pilih_slope == 'Flat':
+        slope =1
     else:
-        slope = 3
+        slope = 0
     cs = st.number_input("Masukkan pembuluh darah utama diwarnai dengan fluoroskopi",0,3,1)
     pilih_thal = st.radio("Kelainan Thalassemia ",options=['Normal','Fixed defect','reversible defect'])
     thal = 3
     if pilih_thal == 'Normal':
-        thal = 3
+        thal = 2
     elif pilih_thal == 'Fixed defect':
-        thal = 6
+        thal = 1
     else :
-        thal = 7
+        thal = 3
     st.write(name,age,sex,cp,tresthbp,chol,fbs,restecg,thalach,exang,oldpeak,slope,cs,thal)
-    butt = st.button('Prediksi')
+    butt = st.button('Klasifikasikan')
     if butt:
         prediction(name,age,sex,cp,tresthbp,chol,fbs,restecg,thalach,exang,oldpeak,slope,cs,thal)
 if __name__ == "__main__":
