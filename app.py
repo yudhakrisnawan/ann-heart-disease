@@ -98,6 +98,14 @@ def graphic(X_train, X_test, y_train, y_test):
     plt.ylabel('Accuracy')
     plt.xlabel('Epoch')
     st.pyplot(fig)
+	
+# Grafik History Loss
+    fig = plt.figure(figsize=(10, 5))
+    plt.plot(range(150), history.history['loss'])
+    st.write("History Loss : ")
+    plt.ylabel('Loss')
+    plt.xlabel('Epoch')
+    st.pyplot(fig)
     
 def prediction(name,age,sex,cp,tresthbp,chol,fbs,restecg,thalach,exang,oldpeak,slope,cs,thal):
     from sklearn.preprocessing import StandardScaler
