@@ -54,7 +54,7 @@ def neuralNet(X_train, X_test, y_train, y_test):
     classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
 
     #Fitting classifier ke Training set
-    classifier.fit(X_train, y_train, batch_size = 32, epochs = 500)
+    classifier.fit(X_train, y_train, batch_size = 100, epochs = 150)
 
 #Scalling data sebelum memasukannya ke Neural Network.
     from sklearn.metrics import accuracy_score
@@ -77,7 +77,7 @@ def graphic(X_train, X_test, y_train, y_test):
     classifier = Sequential()
 
     #input layer
-    classifier.add(Dense(activation="relu", input_dim=13, units=7, kernel_initializer="uniform"))
+    classifier.add(Dense(activation="relu", input_dim=13, units=13, kernel_initializer="uniform"))
     
     #hidden layer
     classifier.add(Dense(activation="relu", units=7, kernel_initializer="uniform"))
