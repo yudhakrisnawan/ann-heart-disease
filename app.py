@@ -41,21 +41,22 @@ def neuralNet(X_train, X_test, y_train, y_test):
     #initializing the ANN
     classifier = Sequential()
 
-    #add input layer and first hidden layer
+    #input layer
     classifier.add(Dense(activation="relu", input_dim=13, units=7, kernel_initializer="uniform"))
     
-    #add second hidden layer
+    #hidden layer
     classifier.add(Dense(activation="relu", units=7, kernel_initializer="uniform"))
     
-    #add output layer
+    #output layer
     classifier.add(Dense(activation="sigmoid", units=1, kernel_initializer="uniform"))
 
-    #Compiling the ANN
+    #Compiling ANN
     classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
 
-    # Fitting classifier to the Training set
+    #Fitting classifier ke Training set
     classifier.fit(X_train, y_train, batch_size = 32, epochs = 500)
-	# Scalling the data before feeding it to the Neural Network.
+
+#Scalling data sebelum memasukannya ke Neural Network.
     from sklearn.metrics import accuracy_score
     from sklearn.metrics import classification_report
     y_pred = classifier.predict(X_test)
@@ -84,7 +85,7 @@ def main():
     from sklearn.preprocessing import StandardScaler
     sc = StandardScaler()
     st.title("KLASIFIKASI PENYAKIT JANTUNG")
-    st.markdown("Aplikasi ini dibuat untuk mangklasifikasikan apakah seseorang memiliki kemungkinan penyakit jantung atau tidak")
+    st.markdown("Aplikasi ini dibuat untuk mangklasifikasikan apakah seseorang memiliki kemungkinan penyakit jantung atau tidak, menggunakan Artificial Neural Network dengan Epochs 150.")
     data = loadData()
     X_train, X_test, y_train, y_test = preprocessing(data)
     score1, report, classifier = neuralNet(X_train, X_test, y_train, y_test)
