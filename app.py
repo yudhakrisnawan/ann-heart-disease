@@ -54,7 +54,7 @@ def neuralNet(X_train, X_test, y_train, y_test):
     classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
 
     #Fitting classifier ke Training set
-    classifier.fit(X_train, y_train, batch_size = 100, epochs = 150)
+    history = classifier.fit(X_train, y_train, batch_size = 100, epochs = 150)
 
 #Scalling data sebelum memasukannya ke Neural Network.
     from sklearn.metrics import accuracy_score
