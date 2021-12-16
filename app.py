@@ -118,7 +118,7 @@ def prediction(name,age,sex,cp,tresthbp,chol,fbs,restecg,thalach,exang,oldpeak,s
     if prediksi_perc > 50:
         st.write("Saudara ",name," Memiliki kemungkinan penyakit jantung")
     else :
-	st.write("Saudara ",name,"Tidak memiliki kemungkinan penyakit jantung")
+        st.write("Saudara ",name,"Tidak memiliki kemungkinan penyakit jantung")
 			
     
 
