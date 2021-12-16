@@ -65,6 +65,39 @@ def neuralNet(X_train, X_test, y_train, y_test):
     report = classification_report(y_test, y_pred)
 	
     return score1, report, classifier
+
+def graphic(X_train, X_test, y_train, y_test):
+    from sklearn.preprocessing import StandardScaler
+    sc = StandardScaler()
+    X_train = sc.fit_transform(X_train)
+    X_test = sc.transform(X_test)
+
+    #Training data
+    #Initializing ANN
+    classifier = Sequential()
+
+    #input layer
+    classifier.add(Dense(activation="relu", input_dim=13, units=7, kernel_initializer="uniform"))
+    
+    #hidden layer
+    classifier.add(Dense(activation="relu", units=7, kernel_initializer="uniform"))
+    
+    #output layer
+    classifier.add(Dense(activation="sigmoid", units=1, kernel_initializer="uniform"))
+
+    #Compiling ANN
+    classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
+
+    #Fitting classifier ke Training set
+    classifier.fit(X_train, y_train, batch_size = 32, epochs = 500)
+
+    # Grafik History Accuracy
+    fig = plt.figure(figsize=(10, 5))
+    plt.plot(range(150), history.history['accuracy'])
+    st.write("History Accuracy : ")
+    plt.ylabel('Accuracy')
+    plt.xlabel('Epoch')
+    st.pyplot(fig)
     
 def prediction(name,age,sex,cp,tresthbp,chol,fbs,restecg,thalach,exang,oldpeak,slope,cs,thal):
     from sklearn.preprocessing import StandardScaler
