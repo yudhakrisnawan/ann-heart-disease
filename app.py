@@ -42,10 +42,10 @@ def neuralNet(X_train, X_test, y_train, y_test):
     classifier = Sequential()
 
     #input layer
-    classifier.add(Dense(activation="relu", input_dim=13, units=7, kernel_initializer="uniform"))
+    classifier.add(Dense(activation="relu", input_dim=13, units=13, kernel_initializer="uniform"))
     
     #hidden layer
-    classifier.add(Dense(activation="relu", units=7, kernel_initializer="uniform"))
+    classifier.add(Dense(activation="relu", units=2, kernel_initializer="uniform"))
     
     #output layer
     classifier.add(Dense(activation="sigmoid", units=1, kernel_initializer="uniform"))
@@ -80,7 +80,7 @@ def graphic(X_train, X_test, y_train, y_test):
     classifier.add(Dense(activation="relu", input_dim=13, units=13, kernel_initializer="uniform"))
     
     #hidden layer
-    classifier.add(Dense(activation="relu", units=7, kernel_initializer="uniform"))
+    classifier.add(Dense(activation="relu", units=2, kernel_initializer="uniform"))
     
     #output layer
     classifier.add(Dense(activation="sigmoid", units=1, kernel_initializer="uniform"))
